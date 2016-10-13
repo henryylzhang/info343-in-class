@@ -221,6 +221,7 @@ var suits = ["clubs", "diamonds", "hearts", "spades"];
 suits.push("jokers");
 
 console.log(suits[4]);
+console.log(suits[suits.length - 1]); //this is better
 
 //then add a new element named "jokers"
 //afer adding it, access it in the array
@@ -276,6 +277,11 @@ if (school.numStudents === "1000") {
     console.log("'1000' === 1000");
 }
 
+var funString = "false";
+if (funString) {
+    console.log("This means that 'false' is true.");
+}
+
 console.groupEnd();
 
 ///////////////////////////////////////////////////////////
@@ -309,6 +315,7 @@ console.groupCollapsed("Functions");
 function reverseString(s) {
     var reversed = "";
     var idx;
+    s = String(s); //safer, but makes it more inefficient, should be used for high level functions   
     for (idx = s.length-1; idx >= 0; idx--) {
         //short form of reversed = reversed + s.charAt(idx)
         reversed += s.charAt(idx);
@@ -333,6 +340,8 @@ logMe("A test log message"); //note the date/time prefix that is added
 
 //if an object property can hold any value, then it
 //can also hold a function!
+
+//this groups a whole bunch of cuntions together
 var reallyBadCipher = {
     transform: function(s, amount) {
         var transText = "";
@@ -365,6 +374,18 @@ console.group("PRACTICE: Functions");
 //if they are equal to each other. Then call it a few times
 //with various numbers to test it.
 
+var min = function(num1, num2) {
+    if (num1 < num2 || num1 == num2) {
+        return num1;
+    } else {
+        return num2;
+    }
+    //return n2 < n1 ? n2 : n1; ternary operator style to write it
+}
+
+console.log(min(2,5));
+console.log(min(5,"3"));
+console.log(min(4,4));
 
 console.groupEnd();
 
@@ -440,6 +461,17 @@ function generateRandomNumbers(howMany, minimum, maximum) {
 
 //>>> your code goes here!
 
+var random = generateRandomNumbers(10, 1, 10);
+console.log(random.forEach(logMe));
+
+var newRandom = random.map(function double(n) {return n*2})
+console.log(newRandom);
+
+var smallValue = random.reduce(min);
+console.log(smallValue);
+
+var sorted = random.sort();
+console.log(sorted);
 
 //now use the .sort() method on a generated array of random
 //numbers to sort them. Note that by default, sort will 
