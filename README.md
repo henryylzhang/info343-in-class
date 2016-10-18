@@ -26,7 +26,6 @@ git pull upstream master
 
 This may put you into a command-line text editor to approve the merge commit message. On the lab machines this editor will be `vim`. To accept the default commit message and exit, hit `Esc` and type `:wq` (for "write and quit").
 
-=======
 ## On Your Own Laptop?
 
 Get into the directory where you already cloned your repo and execute `git status` to see if you have any uncommitted changes. If you do, add and commit those changes.
@@ -44,4 +43,3 @@ git pull upstream master
 ```
 
 This may put you into a command-line text editor to approve the merge commit message. By default this will be `vim`--to exit, hit `Esc` and type `:wq` (for "write and quit"). If you changed the editor to `nano`, hit `Ctrl+X` to exit (listed in the menu shown at the bottom).
-
