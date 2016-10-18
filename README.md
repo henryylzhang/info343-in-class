@@ -26,25 +26,6 @@ git pull upstream master
 
 This may put you into a command-line text editor to approve the merge commit message. On the lab machines this editor will be `vim`. To accept the default commit message and exit, hit `Esc` and type `:wq` (for "write and quit").
 
-<<<<<<< HEAD
-Whenever I tell you to pull updates from my upstream repo, follow these steps.
-
-**If you are on a lab machine**, execute these commands to tell git who you are:
-
-```bash
-$ git config --global user.name "Your Name"
-$ git config --global user.email your-netid@uw.edu
-```
-
-Then `cd` into your local repo directory and execute `git status` to ensure that all your local changes are committed. If you have uncommitted changes, add and commit them now. 
-
-Then run this command to pull updates from the `master` branch of the `upstream` remote and merge them into your code.
-
-```bash
-$ git pull upstream master
-```
-
-This will typically put you into a command-line text editor to approve the merge commit message. If you configured your editor to be `nano`, hit `Ctrl+X` to exit (see menu along the bottom). If you are in `vim` instead, hit `Esc` and then type `:wq` to exit. After exiting, the new directories and files should be in your local repo. You can push them to your copy on GitHub using a normal `git push`.
 =======
 ## On Your Own Laptop?
 
@@ -63,4 +44,4 @@ git pull upstream master
 ```
 
 This may put you into a command-line text editor to approve the merge commit message. By default this will be `vim`--to exit, hit `Esc` and type `:wq` (for "write and quit"). If you changed the editor to `nano`, hit `Ctrl+X` to exit (listed in the menu shown at the bottom).
->>>>>>> 1d47425abf103a45d431f1862748460f554b6567
+
