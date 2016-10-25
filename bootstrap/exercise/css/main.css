@@ -1,0 +1,22 @@
+#intro {
+    background-image: url(../img/seattle.jpg);
+    background-position: center;
+    background-size: cover;
+    padding: 20px 50px;
+    min-height: 1024px;
+    
+}
+
+h1, p, h3, div, li {
+    color: #FFF;
+}
+
+#skills {
+    margin-top: 0;
+    background-color: #152880;
+    text-align: center;
+}
+
+div {
+    margin: 0;
+}
