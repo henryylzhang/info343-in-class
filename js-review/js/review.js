@@ -95,10 +95,15 @@ function logValue(value, formatter) {
     console.log(value);
 }
 
+function doubleNum(num) {
+    return 2 * num;
+}
+
 //example: call logValue passing a date, formatting
 //it first as a string, and then as a date
 logValue("2016-10-27", formatAsString);
 logValue("2016-10-27", formatAsDate);
+logValue("2016-10-27", doubleNum);
 
 /**
  * PRACTICE
@@ -111,7 +116,7 @@ var someNumber = 123456789;
 //logValue(...)
 
 
-
+logValue(someNumber, formatAsCurrency);
 
 
 
@@ -139,6 +144,7 @@ var course = {
 };
 
 console.log("I'm taking", course.curriculum, course.num);
+//course["curriculum"] = course.curriculum = course[propName1]
 
 //if we want to access a property's value and we have
 //that property name in a string variable, we can do 
@@ -153,6 +159,7 @@ console.log("Alternative syntax: I'm taking", course[propName1], course[propName
 if (course.hasOwnProperty("title")) {
     console.log(course.title);
 }
+/* this second test is unreliable, if variables are set to null, 0 or etc, it will return that they don't exist */
 //second: test the value for the property,
 //asking for a property that doesn't yet exist
 //in the HashMap will return `undefined`, which
@@ -190,7 +197,9 @@ console.log("property names:", propNames);
  * see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
  */
 
-
+propNames.forEach(function(key) {
+    console.log(key + " = " + course[key]);
+});
 
 
 
@@ -306,7 +315,7 @@ console.log("least popular female names:", leastPopFemNames);
 function mapArray(array, transFn) {
     var mappedElems = [];
     var idx;
-    for (idx = 0; idx < array.length; idx++) {
+    for (idx = 0; idx < array.length; idx++) {  
         mappedElems.push(transFn(array[idx]));
     }
     return mappedElems;
@@ -351,6 +360,19 @@ console.log("Total count", formatAsNumber(totalCount));
  * just reverse the logic in your compare function.
  */
 
+males.sort(function(record1, record2) {
+    return record2.count - record1.count;
+});
+
+var topTenRecords = males.splice(0,10);
+var topTenNames = topTenRecords.map(function(record) {
+    return record.name;
+});
+
+console.log(topTenNames);
+
+var all = topTenNames.join(", ")
+console.log(all);
 
 
 /**
