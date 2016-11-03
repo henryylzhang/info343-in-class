@@ -26,6 +26,8 @@ import "whatwg-fetch";
 //directory 
 import "./css/main.css";
 
+import SearchForm from "./search-form.jsx";
+import Repo from "./repo.jsx";
 //GitHub Search Repos API URL
 //for info on the GitHub Search Repos API
 //see https://developer.github.com/v3/search/#search-repositories
@@ -41,10 +43,42 @@ export default class extends React.Component {
         };
     }
 
+    handleSearch(query) {
+        console.log("searching for", query);
+        fetch(githubSearchURL + query)
+            .then(response => response.json())
+            .then(data => this.setState({
+                data: data,
+                query: query,
+                page: 1
+            }));
+    }
+
+    handleNextPage() {
+        var nextPageNum = this.state.page + 1;
+        fetch(githubSearchURL + this.state.query + "&page=" + nextPageNum)
+            .then(response => response.json())
+            .then(data => this.setState({
+                data: data,
+                query: this.state.query,
+                page: nextPageNum
+            }));
+    }
+
     render() {
         return (
             <main className="container">
                 <h1>Hello React!</h1>
+                <SearchForm placeholder="name of repo" onSearch={query => this.handleSearch(query)}/>
+                <p>{this.state.data.total_count} repos found</p>
+                <p>
+                    <button className="btn btn-default" onClick={() => this.handleNextPage()}>
+                    NextPage
+                    </button>
+                </p>
+                {
+                    this.state.data.items.map(repo => <Repo key={repo.id} repo={repo}/>)
+                }
             </main>
         );
     }
