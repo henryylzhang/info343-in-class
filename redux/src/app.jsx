@@ -4,11 +4,22 @@ import React from "react";
 import "./css/main.css";
 
 import {Link, IndexLink} from "react-router";
+import {store} from "./shared-state.js"
 
 export default class extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = store.getState();
+    }
+
+    componentDidMount() {
+        this.unsub = store.subscribe(() => this.setState(store.getState()));
+    }
+
+    //good practice to unsub, even if this is never called
+    //future proofing
+    componentWillUnmount() {
+        this.unsub();
     }
 
     render() {
@@ -23,7 +34,7 @@ export default class extends React.Component {
                         </li>
                         <li>
                             <Link to="/favorites" activeClassName="active">
-                                Favorites
+                                Favorites ({this.state.favorites.length})
                             </Link>
                         </li>
                     </ul>
