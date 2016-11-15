@@ -25,5 +25,22 @@ export default class extends React.Component {
 		}
 		return <p className="center-text loading-text">Loading</p>;
 	}
+	//whne someone it trying to get a propTypes. T
+	static get propTypes() {
+		return {
+			// checks to make sure this prop is of type boolean
+			farenheit: React.PropTypes.bool,
+			data: React.PropTypes.shape({
+				name: React.PropTypes.string,
+				main: React.PropTypes.shape({
+					// every time you use shape, can define a subclass
+					temp: React.PropTypes.number
+				}),
+				weather: React.PropTypes.arrayOf(React.PropTypes.shape({
+					description: React.PropTypes.string
+				}))
+			})
+		}
+	}
 }
 		
