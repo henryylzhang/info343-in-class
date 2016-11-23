@@ -25,7 +25,7 @@ function reducer(state, action) {
 
 //type: string to test against later, item: data action will be done on
 export function addFavorite(item) {
-    return  {
+    return {
         type: ADD_FAV_ACTION,
         item: item
     }
